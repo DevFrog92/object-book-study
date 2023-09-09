@@ -1,4 +1,4 @@
-package theator;
+package theater;
 
 public class Bag {
     private Long amount;

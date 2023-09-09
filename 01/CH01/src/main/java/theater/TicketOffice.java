@@ -1,4 +1,4 @@
-package theator;
+package theater;
 
 import java.util.ArrayList;
 import java.util.Arrays;

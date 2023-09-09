@@ -1,4 +1,4 @@
-package theator;
+package theater;
 
 public class Audience {
     private Bag bag;

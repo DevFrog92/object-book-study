@@ -1,4 +1,4 @@
-package theator;
+package theater;
 
 /**
  * 매표소 직원은 자신이 일 할 매표소를 알고 있어야 한다.
