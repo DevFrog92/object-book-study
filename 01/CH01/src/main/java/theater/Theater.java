@@ -13,20 +13,6 @@ public class Theater {
      */
 
     public void enter(Audience audience) {
-        if(audience.getBag().hasInvitation()) {
-            // 의사소통
-            Ticket ticket = ticketSeller.getTicketOffice().getTicket();
-            // 변경
-            audience.getBag().setTicket(ticket);
-        } else {
-            // 의사소통
-            Ticket ticket = ticketSeller.getTicketOffice().getTicket();
-            // 변경
-            audience.getBag().minusAmount(ticket.getFee());
-            // 의사소통
-            ticketSeller.getTicketOffice().plusAmount(ticket.getFee());
-            // 변경
-            audience.getBag().setTicket(ticket);
-        }
+        ticketSeller.sellTo(audience);
     }
 }
