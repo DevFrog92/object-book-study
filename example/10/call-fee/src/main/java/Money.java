@@ -12,11 +12,15 @@ public class Money {
                 return new Money(amount.add(target.amount));
         }
 
-        public Money times(long num){
+        public Money times(double num){
                 return new Money(amount.multiply(BigDecimal.valueOf(num)));
         }
 
         public BigDecimal getAmount() {
                 return amount;
+        }
+
+        public Money minus(Money discountAmount) {
+                return new Money(amount.subtract(discountAmount.getAmount()));
         }
 }

@@ -1,40 +1,20 @@
-import java.time.Duration;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Phone {
-        private final Money amount;
-        private final Duration seconds;
+        private RatePolicy ratePolicy;
         private final List<Call> calls = new ArrayList<>();
 
-        public Phone(Money amount, Duration seconds) {
-                this.amount = amount;
-                this.seconds = seconds;
-        }
-
-        public void call(Call call) {
-                calls.add(call);
+        public Phone(RatePolicy ratePolicy) { // 생성자 의존성 주입
+                this.ratePolicy = ratePolicy;
         }
 
         public List<Call> getCalls() {
-                return calls;
-        }
-
-        public Money getAmount() {
-                return amount;
-        }
-
-        public Duration getSeconds() {
-                return seconds;
+                return Collections.unmodifiableList(calls);
         }
 
         public Money calculateFee() {
-                Money result = Money.ZERO;
-
-                for (Call call : calls) {
-                        result = result.plus(amount.times(call.getDuration().getSeconds() / seconds.getSeconds()));
-                }
-
-                return result;
+                return ratePolicy.calculateFee(this);
         }
 }
